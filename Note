@@ -32,7 +32,7 @@ Source: https://stackoverflow.com/questions/5523735/how-to-make-a-radio-button-l
 	    background-color: #FFF;
 	    color:#00BFFF;
 	    border-top:1px solid red;
-		border-bottom:1px solid red;
+	    border-bottom:1px solid red;
 	    border-right:1px solid red;
 	    margin-bottom: 0;
 	    overflow:auto;
@@ -65,3 +65,72 @@ Source: https://stackoverflow.com/questions/5523735/how-to-make-a-radio-button-l
 </style>
 
 --Ver 2--
+--HTML:
+<div class="hc-radio">
+    <label id="lbl-rb-3_1_1_1_0_001">
+	<input type="radio" name="3_1_1_1_0" id="3_1_1_1_0_001" value="001">
+	<span id="test">$10</span>
+    </label>
+    <label id="lbl-rb-3_1_1_1_0_002">
+	<input type="radio" name="3_1_1_1_0" id="3_1_1_1_0_002" value="002">
+	<span>$20</span>
+    </label>
+    <label id="lbl-rb-3_1_1_1_0_003">
+	<input type="radio" name="3_1_1_1_0" id="3_1_1_1_0_003" value="003">
+	<span>$30</span>
+    </label>
+</div>
+--CSS:
+<style>
+.hc-radio-checked {
+	z-index: 1;
+}
+
+.hc-radio {
+	position: relative;
+	display: inline-flex;
+	padding-right: 0.5rem;
+	/*border-style: dashed;
+	border-width:1px;
+	border-radius: 	0.4rem;*/
+}
+
+.hc-radio label {
+    width:5rem;
+    background-color: #FFF;
+    color:#00BFFF;
+    border:1px solid red;
+    border-radius: 0.4rem;
+    margin-bottom: 0;
+    margin-right: -0.5rem;
+    overflow:auto;
+}
+
+.hc-radio label input {
+    position: absolute;
+    top: 0.5rem;
+    z-index: -1;
+}
+
+.hc-radio label span {
+	display:block;
+    text-align:center;
+}
+
+.hc-radio input:checked + span {
+    background-color:#00BFFF;
+    color:#FFF;
+}
+</style>
+--JS:
+$('input[type=radio][name=3_1_1_1_0]').change(function() {
+    $('input[type=radio][name=3_1_1_1_0]').each(function () {
+	var idLbl = "lbl-rb-3_1_1_1_0_" + this.value;
+	if ($(this).prop('checked')) {
+	    $("#" + idLbl).addClass("hc-radio-checked");
+	} else {
+		$("#" + idLbl).removeClass("hc-radio-checked");
+	}
+
+    });
+});
