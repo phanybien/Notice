@@ -1,88 +1,67 @@
-<html>
-<head>
-	<style>
-	.myTable {
-	  border-collapse: collapse;
-	}
-	
-		.myTable thead {
-		  background-color: #DDD;
-		}
-		
-		.myTable thead th{
-		  border-left: 1px solid #DDD;
-		  border-right: 1px solid #DDD;
-		}
-			.myTable thead th:first-child {
-			border-left: none;
-				  border-top-left-radius: 0.4rem;
-				  border-bottom-left-radius: 0.4rem;
-				}
-				
-			.myTable thead th:last-child {
-			border-right: none;
-			  border-top-right-radius: 0.4rem;
-			  border-bottom-right-radius: 0.4rem;
-			}
+--Radio button Custom--
+Source: https://stackoverflow.com/questions/5523735/how-to-make-a-radio-button-look-like-a-toggle-button
 
-	
-	
-	.myTable tbody td {
-	  border-bottom: 1px ridge blue;
-	}
-	
-	.select {
-		background-color: green;
+--Ver 1--
+--HTML:
+<div class="hc-radio">
+    <label class="hc-radio-first">
+	<input type="radio" name="3_1_1_1_0" id="3_1_1_1_0_001" value="001">
+	<span id="test">$10</span>
+    </label>
+    <label class="">
+	<input type="radio" name="3_1_1_1_0" id="3_1_1_1_0_002" value="002">
+	<span>$20</span>
+    </label>
+    <label class="hc-radio-last">
+	<input type="radio" name="3_1_1_1_0" id="3_1_1_1_0_003" value="003">
+	<span>$30</span>
+    </label>
+</div>
+--CSS:
+<style>
+	.hc-radio {
+		position: relative;
+		display: inline-flex;
+		/*border-style: dashed;
+		border-width:1px;
+		border-radius: 	0.4rem;*/
 	}
 
-	.selected td {
-		background-color: green;
-	  border-top: 1px solid red;
-	  border-bottom: 1px solid red !important;
+	.hc-radio label {
+	    width:5rem;
+	    background-color: #FFF;
+	    color:#00BFFF;
+	    border-top:1px solid red;
+		border-bottom:1px solid red;
+	    border-right:1px solid red;
+	    margin-bottom: 0;
+	    overflow:auto;
 	}
 
-		.selected td:first-child {
-			border-left: 1px solid red;
-		  border-top-left-radius: 0.4rem;
-		  border-bottom-left-radius: 0.4rem;
-		}
-		
-		.selected td:last-child {
-			border-right: 1px solid red;
-		  border-top-right-radius: 0.4rem;
-		  border-bottom-right-radius: 0.4rem;
-		}
-	</style>
-</head>
-<body>
-	<table class="myTable">
-	  <thead>
-		  <tr>
-			<th>ABC</th>
-			<th>ABC</th>
-			<th>ABC</th>
-		  </tr>
-	  </thead>
-	  
-	  <tbody>
-	  <tr class="selected">
-		<td>123</td>
-		<td>123</td>
-		<td>123</td>
-	  </tr>
-	  <tr>
-		<td>123</td>
-		<td>123</td>
-		<td>123</td>
-	  </tr>
-	  <tr class="selected">
-		<td>123</td>
-		<td>123</td>
-		<td>123</td>
-	  </tr>
-	  </tbody>
-	</table>
-</body>
-</html>
+	.hc-radio .hc-radio-first {
+		border-left:1px solid red;
+		border-radius: 0.4rem 0rem 0rem 0.4rem;		  
+	}
 
+	.hc-radio .hc-radio-last {
+	    border-radius: 0rem 0.4rem 0.4rem 0rem;
+	}
 
+	.hc-radio label input {
+	    position: absolute;
+	    top: 0.5rem;
+	    z-index: -1;
+	}
+
+	.hc-radio label span {
+		display:block;
+	    text-align:center;
+	}
+
+	.hc-radio input:checked + span {
+	    background-color:#00BFFF;
+	    color:#FFF;
+	}
+</style>
+
+--Ver 2--
