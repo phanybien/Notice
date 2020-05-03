@@ -89,7 +89,7 @@ Source: https://stackoverflow.com/questions/5523735/how-to-make-a-radio-button-l
 .hc-radio {
 	position: relative;
 	display: inline-flex;
-	padding-right: 0.5rem;
+	padding-left: 0.5rem;
 	/*border-style: dashed;
 	border-width:1px;
 	border-radius: 	0.4rem;*/
@@ -102,7 +102,7 @@ Source: https://stackoverflow.com/questions/5523735/how-to-make-a-radio-button-l
     border:1px solid red;
     border-radius: 0.4rem;
     margin-bottom: 0;
-    margin-right: -0.5rem;
+    margin-left: -0.5rem;
     overflow:auto;
 }
 
@@ -122,7 +122,83 @@ Source: https://stackoverflow.com/questions/5523735/how-to-make-a-radio-button-l
     color:#FFF;
 }
 </style>
---JS:
+--JS: (Thêm xử lý init)
+$('input[type=radio][name=3_1_1_1_0]').change(function() {
+    $('input[type=radio][name=3_1_1_1_0]').each(function () {
+	var idLbl = "lbl-rb-3_1_1_1_0_" + this.value;
+	if ($(this).prop('checked')) {
+	    $("#" + idLbl).addClass("hc-radio-checked");
+	} else {
+		$("#" + idLbl).removeClass("hc-radio-checked");
+	}
+
+    });
+});
+
+--Ver 3--
+--HTML:
+<div class="hc-radio">
+    <label id="lbl-rb-3_1_1_1_0_001" class="hc-radio-first">
+	<input type="radio" name="3_1_1_1_0" id="3_1_1_1_0_001" value="001">
+	<span id="test">$10</span>
+    </label>
+    <label id="lbl-rb-3_1_1_1_0_002" class="">
+	<input type="radio" name="3_1_1_1_0" id="3_1_1_1_0_002" value="002" checked="">
+	<span>$20</span>
+    </label>
+    <label id="lbl-rb-3_1_1_1_0_003" class="">
+	<input type="radio" name="3_1_1_1_0" id="3_1_1_1_0_003" value="003">
+	<span>$30</span>
+    </label>
+</div>
+--CSS:
+<style>
+.hc-radio-checked {
+	z-index: 1;
+	border-radius: 0.4rem !important;
+}
+
+.hc-radio {
+	position: relative;
+	display: inline-flex;
+	padding-left: 0.5rem;
+	/*border-style: dashed;
+	border-width:1px;
+	border-radius: 	0.4rem;*/
+}
+
+.hc-radio label {
+    width:5rem;
+    background-color: #FFF;
+    color:#00BFFF;
+    border:1px solid red;
+    border-radius: 0rem 0.4rem 0.4rem 0rem;
+    margin-bottom: 0;
+    margin-left: -0.5rem;
+    overflow:auto;
+}
+
+.hc-radio .hc-radio-first {
+	border-radius: 0.4rem;		  
+}
+
+.hc-radio label input {
+    position: absolute;
+    top: 0.5rem;
+    z-index: -1;
+}
+
+.hc-radio label span {
+	display:block;
+    text-align:center;
+}
+
+.hc-radio input:checked + span {
+    background-color:#00BFFF;
+    color:#FFF;
+}
+</style>
+--JS: (Thêm xử lý init)
 $('input[type=radio][name=3_1_1_1_0]').change(function() {
     $('input[type=radio][name=3_1_1_1_0]').each(function () {
 	var idLbl = "lbl-rb-3_1_1_1_0_" + this.value;
